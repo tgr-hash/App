@@ -52,7 +52,7 @@ HOME_HTML = """
 
     <div class="buttons">
         <a href="/games/games.html" class="btn">Games</a>
-        <a href="/chat" class="btn">Chat</a>
+        <a href="https://chat-s0cb.onrender.com" target="_blank" class="btn">Chat</a>
     </div>
 </body>
 </html>
@@ -66,7 +66,7 @@ async def home(request):
 # =========================
 async def chat_redirect(request):
     # OPTION 1: redirect to your existing deployed chat
-    return web.HTTPFound("https://your-chat-service.onrender.com")
+    return web.HTTPFound("https://chat-s0cb.onrender.com")
 
     # OPTION 2 (better later):
     # return web.Response(text=CHAT_HTML, content_type="text/html")
