@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Floating AI Assistant</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      min-height: 100vh;
+    }
+
+    .demo-content {
+      padding: 48px 24px;
+      color: #333;
+    }
+
+    .chat-widget {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 320px;
+      max-width: calc(100vw - 24px);
+      z-index: 1000;
+    }
+
+    .chat-toggle {
+      width: 60px;
+      height: 60px;
+      margin-left: auto;
+      border: none;
+      border-radius: 50%;
+      background: #111;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .chat-panel {
+      display: none;
+      flex-direction: column;
+      height: 460px;
+      margin-bottom: 12px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .chat-panel.open {
+      display: flex;
+    }
+
+    .chat-header {
+      padding: 14px 16px;
+      background: #111;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      background: #fafafa;
+    }
+
+    .message {
+      max-width: 85%;
+      margin-bottom: 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      line-height: 1.4;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .message.user {
+      margin-left: auto;
+      background: #111;
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+
+    .message.ai {
+      background: #e9e9e9;
+      color: #111;
+      border-bottom-left-radius: 4px;
+    }
+
+    .message.system {
+      background: #fff4e5;
+      color: #7a4b00;
+      border: 1px solid #ffd6a0;
+    }
+
+    .chat-form {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      border-top: 1px solid #e5e5e5;
+      background: #fff;
+    }
+
+    .chat-input {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font: inherit;
+      outline: none;
+    }
+
+    .chat-input:focus {
+      border-color: #111;
+    }
+
+    .chat-send {
+      border: none;
+      border-radius: 10px;
+      background: #111;
+      color: #fff;
+      padding: 10px 14px;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .chat-send:disabled,
+    .chat-input:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-content">
+    <h1>Website Content</h1>
+    <p>This page includes a minimal floating AI assistant widget.</p>
+  </div>
+
+  <div class="chat-widget">
+    <div class="chat-panel" id="chatPanel">
+      <div class="chat-header">AI Assistant</div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="message ai">Hi! Ask me something.</div>
+      </div>
+      <form class="chat-form" id="chatForm">
+        <input
+          id="chatInput"
+          class="chat-input"
+          type="text"
+          placeholder="Type a message..."
+          autocomplete="off"
+          required
+        >
+        <button id="sendButton" class="chat-send" type="submit">Send</button>
+      </form>
+    </div>
+
+    <button id="chatToggle" class="chat-toggle" type="button" aria-label="Open chat">
+      AI
+    </button>
+  </div>
+
+  <script>
+    const chatToggle = document.getElementById("chatToggle");
+    const chatPanel = document.getElementById("chatPanel");
+    const chatMessages = document.getElementById("chatMessages");
+    const chatForm = document.getElementById("chatForm");
+    const chatInput = document.getElementById("chatInput");
+    const sendButton = document.getElementById("sendButton");
+
+    function addMessage(text, type) {
+      const message = document.createElement("div");
+      message.className = "message " + type;
+      message.textContent = text;
+      chatMessages.appendChild(message);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      return message;
+    }
+
+    function setLoading(isLoading) {
+      chatInput.disabled = isLoading;
+      sendButton.disabled = isLoading;
+      sendButton.textContent = isLoading ? "..." : "Send";
+    }
+
+    chatToggle.addEventListener("click", function () {
+      chatPanel.classList.toggle("open");
+
+      if (chatPanel.classList.contains("open")) {
+        chatInput.focus();
+      }
+    });
+
+    chatForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const prompt = chatInput.value.trim();
+      if (!prompt) {
+        return;
+      }
+
+      addMessage(prompt, "user");
+      chatInput.value = "";
+      setLoading(true);
+
+      try {
+        const response = await fetch("http://localhost:11434/api/generate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            model: "llama3:latest",
+            prompt: prompt,
+            stream: false
+          })
+          
+        });
+
+        if (!response.ok) {
+          throw new Error("Request failed with status " + response.status);
+        }
+
+        const data = await response.json();
+        const aiText = data.response ? data.response.trim() : "";
+
+        if (!aiText) {
+          throw new Error("Empty response from AI");
+        }
+
+        addMessage(aiText, "ai");
+      } catch (error) {
+        addMessage("Sorry, something went wrong. " + error.message, "system");
+      } finally {
+        setLoading(false);
+        chatInput.focus();
+      }
+    });
+  </script>
+</body>
+</html>
