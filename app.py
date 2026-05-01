@@ -28,7 +28,7 @@ HOME_HTML = """
         }
 
         .subtitle {
-            font-size: 12px;
+            font-size: 18px;
             margin-top: -20px;
             margin-bottom: 40px;
             color: #cccccc;
