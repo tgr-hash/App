@@ -56,7 +56,7 @@ HOME_HTML = """
 </head>
 <body>
     <h1>tgr-hash</h1>
-    <h2 class="subtitle">This site is my homepage. It's only redirects to all of my other work.</h2>
+    <h2 class="subtitle">This site is my homepage. This page only redirects to all of my other work.</h2>
     
     <div class="buttons">
         <a href="/games/games.html" class="btn">Games</a>
