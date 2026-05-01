@@ -11,7 +11,7 @@ HOME_HTML = """
 <!DOCTYPE html>
 <html>
 <head>
-    <title>tgr-hash</title>
+    <title>tgr-hash homepage</title>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
     <style>
         body {
@@ -24,7 +24,7 @@ HOME_HTML = """
 
         h1 {
             margin-top: 20vh;
-            font-size: 100px;
+            font-size: 120px;
         }
 
         .buttons {
