@@ -2,11 +2,6 @@ import asyncio
 from aiohttp import web
 import os
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-# debug thing
-print("FILES:", os.listdir(BASE_DIR))
-
 PORT = int(os.environ.get("PORT", 8000))
 
 # =========================
@@ -104,6 +99,9 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DOCS_PATH = os.path.join(BASE_DIR, "documents")
 
+# debug thing
+print("FILES:", os.listdir(BASE_DIR))
+print("DOCUMENTS:", os.listdir(DOCS_PATH))
 app.router.add_static('/documents/', path=DOCS_PATH, name='documents')
 
 
