@@ -24,7 +24,7 @@ HOME_HTML = """
 
         h1 {
             margin-top: 20vh;
-            font-size: 80px;
+            font-size: 100px;
         }
 
         .buttons {
@@ -53,7 +53,7 @@ HOME_HTML = """
     <div class="buttons">
         <a href="/games/games.html" class="btn">Games</a>
         <a href="https://chat-s0cb.onrender.com" target="_blank" class="btn">Chat</a>
-        <a href="/other.md" target="_blank" class="btn">Other Work</a>
+        <a href="/other.html" target="_blank" class="btn">Other Work</a>
     </div>
     <div class="buttons">
         <a href="/games/repos.html" class="btn">My Code</a>
