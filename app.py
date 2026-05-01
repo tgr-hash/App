@@ -27,6 +27,13 @@ HOME_HTML = """
             font-size: 120px;
         }
 
+        .subtitle {
+            font-size: 12px;
+            margin-top: -20px;
+            margin-bottom: 40px;
+            color: #cccccc;
+        }
+
         .buttons {
             margin-top: 40px;
         }
@@ -49,7 +56,8 @@ HOME_HTML = """
 </head>
 <body>
     <h1>tgr-hash</h1>
-
+    <h2 class="subtitle">This site is my homepage. It's only redirects to all of my other work.</h2>
+    
     <div class="buttons">
         <a href="/games/games.html" class="btn">Games</a>
         <a href="https://chat-s0cb.onrender.com" target="_blank" class="btn">Chat</a>
