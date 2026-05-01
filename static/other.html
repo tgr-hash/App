@@ -3,13 +3,28 @@
 <head>
 
   <style>
-    body {
-        font-family: "Courier New", monospace;
-        padding-left: 20px;
-        line-height: 1.6;
-        max-width: 900px;
+body {
+    font-family: "Courier New", monospace;
+    padding-left: 20px;
+    line-height: 1.6;
+    max-width: 900px;
+    color: black;
+}
+
+/* fade in animation */
+p, h1, h2, h3, li {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeUp 0.5s ease forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-  </style>
+}
+</style>
 
   <style>body {
    color: black;
@@ -303,4 +318,4 @@ tick++<span class="hljs-comment">;  </span>
 <p>grep rcon server.properties</p>
 <p>$env:SPOTIPY_CLIENT_ID=&quot;ec69ef77b7424726bc56714e5d7bcc6b&quot;<br>$env:SPOTIPY_CLIENT_SECRET=&quot;10ad06b837c641309bf8bb5af2852993&quot;</p>
 <p>$env:SPOTIPY_CLIENT_ID=&quot;ec69ef77b7424726bc56714e5d7bcc6b&quot;<br>$env:SPOTIPY_CLIENT_SECRET=&quot;10ad06b837c641309bf8bb5af2852993&quot;  </p>
-</body></html>
+</body></html> 
