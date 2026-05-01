@@ -81,6 +81,6 @@ app.router.add_get("/", home)
 app.router.add_get("/chat", chat_redirect)
 
 # serve games folder
-app.router.add_static('/games/', path='./static/games', name='games')
+app.router.add_static('/games/', path='./static', name='games')
 
 web.run_app(app, port=PORT)
