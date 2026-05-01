@@ -53,9 +53,7 @@ HOME_HTML = """
     <div class="buttons">
         <a href="/games/games.html" class="btn">Games</a>
         <a href="https://chat-s0cb.onrender.com" target="_blank" class="btn">Chat</a>
-        <a href="https://docs.google.com/document/d/1G8oD_OREuxsBX3yERoVZR-_VkZbBF38ABw9ozzos7fs/edit?tab=t.v4rrevjjqq4h" target="_blank" class="btn">
-    Download Document
-</a>
+        <a href="/other.md" target="_blank" class="btn">Other Work</a>
     </div>
 </body>
 </html>
