@@ -2,9 +2,10 @@ import asyncio
 from aiohttp import web
 import os
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # debug thing
 print("FILES:", os.listdir(BASE_DIR))
-print("DOCUMENTS:", os.listdir(DOCS_PATH)) # suggested by vscode
 
 PORT = int(os.environ.get("PORT", 8000))
 
