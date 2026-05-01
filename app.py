@@ -2,6 +2,10 @@ import asyncio
 from aiohttp import web
 import os
 
+# debug thing
+print("FILES:", os.listdir(BASE_DIR))
+print("DOCUMENTS:", os.listdir(DOCS_PATH)) # suggested by render
+
 PORT = int(os.environ.get("PORT", 8000))
 
 # =========================
