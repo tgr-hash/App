@@ -56,7 +56,7 @@ HOME_HTML = """
         <a href="/other.md" target="_blank" class="btn">Other Work</a>
     </div>
     <div class="buttons">
-        <a href="/games/games.html" class="btn">My Code</a>
+        <a href="/static/repos.html" class="btn">My Code</a>
         <a href="https://google.com" target="_blank" class="btn">Placeholder</a>
     </div>
 </body>
