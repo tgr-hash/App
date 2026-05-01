@@ -5,7 +5,7 @@
     <title>Markdown Viewer</title>
 
     <!-- Markdown parser -->
-    <script src="./otherwork.md"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <style>
         body {
@@ -21,7 +21,7 @@
     <div id="content">Loading...</div>
 
     <script>
-        fetch("myfile.md")
+        fetch("/documents/otherwork.md")
             .then(res => res.text())
             .then(md => {
                 document.getElementById("content").innerHTML = marked.parse(md);

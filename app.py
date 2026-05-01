@@ -94,6 +94,12 @@ app.router.add_get("/chat", chat_redirect)
 
 # serve games folder
 app.router.add_static('/games/', path='./static', name='games')
-app.router.add_static('/documents/', path='./documents', name='documents')
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DOCS_PATH = os.path.join(BASE_DIR, "documents")
+
+app.router.add_static('/documents/', path=DOCS_PATH, name='documents')
+
 
 web.run_app(app, port=PORT)
