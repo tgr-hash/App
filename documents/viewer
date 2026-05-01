@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Markdown Viewer</title>
+
+    <!-- Markdown parser -->
+    <script src="./otherwork.md"></script>
+
+    <style>
+        body {
+            font-family: "Courier New", monospace;  
+            padding-left: 20px;
+            line-height: 1.6;
+            max-width: 900px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">Loading...</div>
+
+    <script>
+        fetch("myfile.md")
+            .then(res => res.text())
+            .then(md => {
+                document.getElementById("content").innerHTML = marked.parse(md);
+            });
+    </script>
+</body>
+</html>
