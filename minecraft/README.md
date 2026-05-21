@@ -32,7 +32,7 @@ If this is your first time using Prism:
 
 ## Step 3: Download the Modpack
 
-Click on:
+Back at the tgr-hash homepage, click on:
  **Minecraft** --> **Modpack of your choice** this will download a .mrpack version of the modpack.
 
 
