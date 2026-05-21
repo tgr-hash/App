@@ -66,6 +66,7 @@ HOME_HTML = """
     <div class="buttons">
         <a href="/games/repos.html" class="btn">My Code</a>
         <a href="https://google.com" target="_blank" class="btn">Placeholder</a>
+        <a href="/minecraft/minecraft.html" class="btn">Minecraft</a>
     </div>
 </body>
 </html>
@@ -93,7 +94,9 @@ app.router.add_get("/", home)
 app.router.add_get("/chat", chat_redirect)
 
 # serve games folder
-app.router.add_static('/games/', path='./static', name='games')
+app.router.add_static('/games/', path='./games', name='games')
+
+app.router.add_static('/minecraft/', path='./minecraft', name='minecraft')
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
