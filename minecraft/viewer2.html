@@ -53,7 +53,7 @@
     <div id="content">Loading...</div>
 
     <script>
-        fetch("/minecraft/guide1.md")
+        fetch("/minecraft/guide2.md")
             .then(res => res.text())
             .then(md => {
                 document.getElementById("content").innerHTML = marked.parse(md);
