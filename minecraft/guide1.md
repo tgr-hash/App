@@ -2,7 +2,6 @@
 
 This guide will walk you through installing the modpack step-by-step. Follow it exactly.
 
----
 
 ## Step 1: Install Prism Launcher
 
@@ -19,7 +18,6 @@ This guide will walk you through installing the modpack step-by-step. Follow it 
 
 4. Open Prism Launcher after installation.
 
----
 
 ## Step 2: Set up Minecraft (first time only)
 
