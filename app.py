@@ -65,7 +65,6 @@ HOME_HTML = """
     </div>
     <div class="buttons">
         <a href="/games/repos.html" class="btn">My Code</a>
-        <a href="https://google.com" target="_blank" class="btn">Placeholder</a>
         <a href="/minecraft/minecraft.html" class="btn">Minecraft</a>
     </div>
 </body>
